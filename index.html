@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Schneiderei DMR - Meisterbetrieb für Maßanfertigungen & Änderungen in Berlin-Schöneberg. Seit über 30 Jahren Tradition und Qualität.">
+    <title>Schneiderei DMR | Maßanfertigungen Berlin-Schöneberg</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --accent: #c9a961;
+            --light: #f8f6f3;
+            --text: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2c2c2c 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '✂';
+            position: absolute;
+            font-size: 400px;
+            opacity: 0.03;
+            top: -100px;
+            right: -50px;
+            transform: rotate(-15deg);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #b8984d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Info Banner */
+        .info-banner {
+            background: #fff3cd;
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 1rem auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            border-top: 4px solid var(--accent);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: var(--light);
+            padding: 2rem;
+            border-left: 4px solid var(--accent);
+            margin: 2rem 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .hours-table {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .hours-table td {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-table td:first-child {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Trust Badges */
+        .trust-section {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .trust-icon {
+            font-size: 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f0f0f;
+            color: #aaa;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">SCHNEIDEREI <span>DMR</span></a>
+            <ul class="nav-links">
+                <li><a href="#start">Start</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Info Banner -->
+    <div class="info-banner" style="margin-top: 80px;">
+        📍 Wir sind umgezogen! Neue Adresse: Grunewaldstraße 56, 10825 Berlin-Schöneberg
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="start">
+        <div class="hero-content">
+            <div class="hero-badge">✓ Meisterbetrieb seit 1994</div>
+            <h1>Maßgeschneiderte Eleganz</h1>
+            <p class="subtitle">Seit über 30 Jahren Ihr Experte für hochwertige Maßanfertigungen und perfekte Passform in Berlin</p>
+            <div class="cta-buttons">
+                <a href="tel:+4930XXXXXXX" class="btn btn-primary">📞 Jetzt Termin vereinbaren</a>
+                <a href="#kontakt" class="btn btn-secondary">Route planen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="leistungen">
+        <h2 class="section-title">Unsere Leistungen</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">👔</div>
+                <h3>Maßanfertigungen</h3>
+                <p>Individuelle Anfertigungen für Damen und Herren. Von Business-Outfits bis zur Abendgarderobe – perfekt zugeschnitten auf Ihre Maße und Wünsche.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <h3>Änderungen</h3>
+                <p>Professionelle Änderungen aller Art: Kürzen, enger/weiter nähen, Reißverschlüsse erneuern, Aufschlagänderungen. Schnell und präzise.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧵</div>
+                <h3>Reparaturen</h3>
+                <p>Flicken, Stopfen, Nahtreparaturen und Verstärkungen. Wir retten Ihre Lieblingsstücke mit handwerklicher Präzision.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+                <h3>Hermes Paketservice</h3>
+                <p>Bequemer Paketannahme- und Versandservice vor Ort. Ihre Sendungen sicher und zuverlässig.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="ueber-uns">
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left;">Tradition trifft Moderne</h2>
+                <p>Die Schneiderei DMR steht seit über drei Jahrzehnten für handwerkliche Exzellenz in Berlin. Was als kleiner Familienbetrieb begann, hat sich zu einer festen Institution in Schöneberg entwickelt.</p>
+                
+                <div class="highlight-box">
+                    <strong>Unser Anspruch:</strong> Jedes Stück, das unsere Werkstatt verlässt, muss perfekt sitzen. Dafür nehmen wir uns Zeit – für die Beratung, die Anprobe und die letzte Feinjustierung.
+                </div>
+
+                <p>Von der klassischen Maßanfertigung bis zur schnellen Hose kürzen: Bei uns erhalten Sie persönlichen Service mit dem Know-how eines zertifizierten Meisterbetriebs.</p>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Jahre Erfahrung</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Zufriedene Kunden</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Handarbeit</div>
+                    </div>
+                </div>
+            </div>
+            <div style="background: linear-gradient(45deg, #ddd, #eee); height: 500px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #999; font-style: italic;">
+                [Hier Foto vom Atelier/Schaufenster einfügen]
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust -->
+    <section class="trust-section">
+        <h2 class="section-title" style="color: white;">Warum Schneiderei DMR?</h2>
+        <div class="trust-badges">
+            <div class="trust-item">
+                <div class="trust-icon">🏆</div>
+                <span>Zertifizierter<br>Meisterbetrieb</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">⚡</div>
+                <span>Express-Service<br>verfügbar</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🤝</div>
+                <span>Persönliche<br>Beratung</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">♻️</div>
+                <span>Nachhaltige<br>Modepflege</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="kontakt">
+        <h2 class="section-title">Kontakt & Anfahrt</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Besuchen Sie uns</h3>
+                
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <strong>Schneiderei DMR</strong><br>
+                        Grunewaldstraße 56<br>
+                        10825 Berlin-Schöneberg
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <strong>Telefon</strong><br>
+                        <a href="tel:+4930XXXXXXX" style="color: var(--accent); text-decoration: none; font-size: 1.2rem;">030 / XX XX XX XX</a><br>
+                        <small>Termine auch kurzfristig möglich</small>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-icon">🕒</span>
+                    <div>
+                        <strong>Öffnungszeiten</strong>
+                        <table class="hours-table">
+                            <tr>
+                                <td>Montag – Freitag</td>
+                                <td>09:00 – 17:00 Uhr</td>
+                            </tr>
+                            <tr>
+                                <td>Samstag</td>
+                                <td>10:00 – 13:00 Uhr</td>
+                            </tr>
+                            <tr>
+                                <td>Sonntag</td>
+                                <td>Geschlossen</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-icon">🚗</span>
+                    <div>
+                        <strong>Anfahrt & Parken</strong><br>
+                        U-Bahn: U4 Rathaus Schöneberg (5 Min. Fußweg)<br>
+                        Bus: M85, M46 Grunewaldstraße<br>
+                        Parken: Parkplätze in der Straße vorhanden
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.428123456789!2d13.3523!3d52.4889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a8501234567890%3A0x1234567890abcdef!2sGrunewaldstra%C3%9Fe%2056%2C%2010825%20Berlin!5e0!3m2!1sde!2sde!4v1234567890" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Schneiderei DMR</h4>
+                <p>Grunewaldstraße 56<br>10825 Berlin</p>
+                <p style="margin-top: 1rem;">Meisterbetrieb für Maßanfertigungen</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#leistungen">Leistungen</a>
+                <a href="#ueber-uns">Über uns</a>
+                <a href="#kontakt">Kontakt</a>
+                <a href="#">Impressum</a>
+                <a href="#">Datenschutz</a>
+            </div>
+            <div class="footer-section">
+                <h4>Rechtliches</h4>
+                <p>Diese Website ist ein Demo-Entwurf. Bitte fügen Sie ein korrektes Impressum und Datenschutzerklärung hinzu, bevor Sie die Seite veröffentlichen.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Schneiderei DMR | Alle Rechte vorbehalten</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile Menu Toggle (Basic)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'white';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '2rem';
+            navLinks.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+        });
+    </script>
+
+</body>
+</html>
