@@ -323,6 +323,38 @@
             font-size: 0.9rem;
         }
 
+        /* About Image Styling */
+        .about-image {
+            position: relative;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+
         /* Contact Section */
         .contact-wrapper {
             display: grid;
@@ -470,6 +502,10 @@
                 gap: 2rem;
             }
 
+            .about-image {
+                height: 400px;
+            }
+
             .stats {
                 grid-template-columns: 1fr;
             }
@@ -556,7 +592,7 @@
         <div class="about-content">
             <div class="about-text">
                 <h2 class="section-title" style="text-align: left;">Tradition trifft Moderne</h2>
-                <p>Die Schneiderei DMR steht seit über drei Jahrzehnten für handwerkliche Exzellenz in Berlin. Was als kleiner Familienbetrieb begann, hat sich zu einer festen Institution in Schöneberg entwickelt.</p>
+                <p>Die Schneiderei DEMIR steht seit über drei Jahrzehnten für handwerkliche Exzellenz in Berlin. Was als kleiner Familienbetrieb begann, hat sich zu einer festen Institution in Schöneberg entwickelt.</p>
                 
                 <div class="highlight-box">
                     <strong>Unser Anspruch:</strong> Jedes Stück, das unsere Werkstatt verlässt, muss perfekt sitzen. Dafür nehmen wir uns Zeit – für die Beratung, die Anprobe und die letzte Feinjustierung.
@@ -579,15 +615,20 @@
                     </div>
                 </div>
             </div>
-            <div style="background: linear-gradient(45deg, #ddd, #eee); height: 500px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #999; font-style: italic;">
-                [Hier Foto vom Atelier/Schaufenster einfügen]
+            
+            <!-- HIER IST DAS BILD EINGEFÜGT -->
+            <div class="about-image">
+                <img src="Banner1.jpg" alt="Schneidermeister bei der Arbeit - Maßanfertigung in der Schneiderei DEMIR">
+                <div class="about-image-caption">
+                    Handwerkliche Präzision seit 1994
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Trust -->
     <section class="trust-section">
-        <h2 class="section-title" style="color: white;">Warum Schneiderei DMR?</h2>
+        <h2 class="section-title" style="color: white;">Warum Schneiderei DEMIR?</h2>
         <div class="trust-badges">
             <div class="trust-item">
                 <div class="trust-icon">🏆</div>
